@@ -1,0 +1,6 @@
+[submodule "gitViewer"]
+	path = gitViewer
+	url = git@github.com:jrhea/gitViewer.git
+[submodule "prime-numbers"]
+	path = prime-numbers
+	url = git@github.com:jrhea/prime-numbers.git
