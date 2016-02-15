@@ -1,46 +1,87 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>toolbox-challenge by jrhea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">toolbox-challenge</h1>
+      <h2 class="project-tagline">jonathan rhea&#39;s toolbox challenge submission</h2>
+      <a href="https://github.com/jrhea/toolbox-challenge" class="btn">View on GitHub</a>
+      <a href="https://github.com/jrhea/toolbox-challenge/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jrhea/toolbox-challenge/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" href="stylesheets/github-dark.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
-
-  <title>toolbox-challenge</title>
-  <meta name="description" content="jonathan rhea&#39;s toolbox challenge submission">
-
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-</head>
-
-<body>
-
-  <div class="wrapper">
-    <header>
-      <h1 class="title">toolbox-challenge</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">jonathan rhea&#39;s toolbox challenge submission</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/jrhea/toolbox-challenge" class="code">View toolbox-challenge on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h1>
-<a id="toolbox-challenge" class="anchor" href="#toolbox-challenge" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>toolbox challenge</h1>
+    <section class="main-content">
+      <h1>
+<a id="question-1" class="anchor" href="#question-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Question 1</h1>
 
 <h3>
-<a id="question-1" class="anchor" href="#question-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>question 1</h3>
+<a id="problem" class="anchor" href="#problem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem:</h3>
 
-<p>Write a function to determine whether a given number is prime or not (divisible only by itself and 1).</p>
+<p>Write a function to determine whether a given number is prime.</p>
+
+<h3>
+<a id="solution" class="anchor" href="#solution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution:</h3>
+
+<p>I have provided a python file prime.py that includes:</p>
+
+<ul>
+<li>the best prime number test I could come up with (in a reasonable amount of time)</li>
+<li>the ability to use caching to improve the speed</li>
+<li>prime number generator based on the <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
+</li>
+<li>option that demonstrates the speed of my alogrithm to the Sieve of Eratosthenes (generating primes up to N)</li>
+<li>tests that compare my implementation to lists of known primes found on the web</li>
+</ul>
+
+<p>Here is a screencast of the prime.py in action:</p>
+
+<p><img src="https://raw.githubusercontent.com/jrhea/prime-numbers/master/images/prime_loops.gif" alt="prime.py"></p>
+
+<p><strong>proof of algorithm's optimizations:</strong></p>
+
+<p>All integers can be written in the form:</p>
+
+<pre><code>        6k+i where i = 0,1,2,3,4,5
+</code></pre>
+
+<p><em>Note: We can show that 5 could be replaced by -1 by substituting k' with k+1</em></p>
+
+<pre><code>        6k'-1 = 6k+5 when k'=k+1
+</code></pre>
+
+<p>All odd integers can be written in the form:</p>
+
+<pre><code>        6k+i where i = 1,3,5
+</code></pre>
+
+<p><em>Note: We can remove 3 from i bc 6k+3 only generates a single prime (3) when k=0</em></p>
+
+<p>6k+3 is composite for all other values of k:</p>
+
+<pre><code>       6k % 3 = 0 -&gt; (6k+3) % 3 = 0
+</code></pre>
+
+<p>Therefore, set containing all odd primes greater than 3 can be written as:</p>
+
+<pre><code>        6k+i where i = 1,5  
+</code></pre>
+
+<p><strong>Now I have proven that I can speed up the prime test by:</strong></p>
+
+<ul>
+<li>incrementing i by 6 each pass of the loop </li>
+<li>only checking if n mod i or n mod i+2 equals 0</li>
+</ul>
+
+<p><em>Note: i is equivalent to 6k+5 &amp; i+2 is equivalent to 6k+1</em></p>
 
 <p><strong>browse repository:</strong></p>
 
@@ -51,16 +92,18 @@
 <pre><code>git clone https://github.com/jrhea/prime-numbers.git
 </code></pre>
 
-<p><strong>documentation:</strong></p>
-
-<p><strong>proof:</strong></p>
-<script src="https://gist.github.com/jrhea/4b20d743c7e9b374e05b.js"></script>
-
+<h1>
+<a id="question-2" class="anchor" href="#question-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Question 2</h1>
 
 <h3>
-<a id="question-2" class="anchor" href="#question-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>question 2</h3>
+<a id="problem-1" class="anchor" href="#problem-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem:</h3>
 
-<p>Write an application for browsing git commit history</p>
+<p>Write an application for browsing git commit history.</p>
+
+<h3>
+<a id="solution-1" class="anchor" href="#solution-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution:</h3>
+
+<p><img src="https://raw.githubusercontent.com/jrhea/gitViewer/master/docs/gitViewer.gif" alt="gitViewer"></p>
 
 <p><strong>browse repository:</strong></p>
 
@@ -71,36 +114,17 @@
 <pre><code>git clone https://github.com/jrhea/gitViewer.git
 </code></pre>
 
-<p><strong>documentation</strong></p>
-<p></p><a href="http://jrhea.github.io/gitViewer">http://jrhea.github.io/gitViewer</a></p>
+<p><strong>source code documentation</strong></p>
 
-<h3>
-<a id="about-me" class="anchor" href="#about-me" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>about me</h3>
+<p><a href="http://jrhea.github.io/gitViewer">http://jrhea.github.io/gitViewer</a></p>
 
-<ul>
-<li> resume</li>
-<li> linked-in</li>
-<li> github account </li>
-</ul>
-        </article>
-      </div>
-    </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/jrhea" class="avatar"><img src="https://avatars3.githubusercontent.com/u/5555162?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/jrhea">jrhea</a> maintains <a href="https://github.com/jrhea/toolbox-challenge">toolbox-challenge</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jrhea/toolbox-challenge">toolbox-challenge</a> is maintained by <a href="https://github.com/jrhea">jrhea</a>.</span>
 
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/jrhea/toolbox-challenge/tarball/master" class="tar">tar</a><a href="https://github.com/jrhea/toolbox-challenge/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
+    </section>
 
             <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -113,5 +137,5 @@
             } catch(err) {}
           </script>
 
-</body>
+  </body>
 </html>
