@@ -66,7 +66,7 @@ Write an application for browsing git commit history.
 
 ### Solution:
 
-
+![gitViewer](https://raw.githubusercontent.com/jrhea/gitViewer/master/docs/gitViewer.gif)
 
 **browse repository:**
 
@@ -78,6 +78,7 @@ https://github.com/jrhea/gitViewer
 git clone https://github.com/jrhea/gitViewer.git
 ```
 
-**documentation**
+**source code documentation**
+
 http://jrhea.github.io/gitViewer
 
