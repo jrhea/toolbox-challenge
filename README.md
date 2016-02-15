@@ -31,7 +31,7 @@ All odd integers can be written in the form:
 
             6k+i where i = 1,3,5
 
-We remove 3 from i bc 6k+3 only generates a single prime (3) when k=0.
+_Note: We can remove 3 from i bc 6k+3 only generates a single prime (3) when k=0_
 
 6k+3 is composite for all other values of k:
 
