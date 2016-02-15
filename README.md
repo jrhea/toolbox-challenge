@@ -9,7 +9,8 @@ I have provided a python file prime.py that includes:
 
 * the best prime number test I could come up with (in a reasonable amount of time)
 * the ability to use caching to improve the speed
-* prime number generator based on the Sieve of Eratosthenes
+* prime number generator based on the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
+* option that demonstrates the speed of my alogrithm to the Sieve of Eratosthenes (generating primes up to N)
 * tests that compare my implementation to lists of known primes found on the web
 
 Here is a screencast of the prime.py in action:
